@@ -19,9 +19,7 @@ or use docker-compose for local development: `docker-compose up`.
 
 ## Kubernetes deployment
 
-Loadtesting kubernetes applications is important. You can use the artillery to test an nginx webserver for example. Refer the deployment manifests 
-
-- `siege.yaml` which creates a deployment of siege. To increase the battling requests, either scale up the siege parameters in the arguments of the deployment 
+Loadtesting kubernetes applications is important. You can use the artillery to test an nginx webserver for example. Refer to the deployment manifest `siege.yaml` which creates a deployment of siege. To increase the battling requests, either scale up the siege parameters in the arguments of the deployment 
 
 ```yaml
 [..]
@@ -36,5 +34,8 @@ or scale the replication count of pods in the deployment:
 
 `$ kubectl scale deployment siege -n artillery --replicas=10`
 
-This will create new pods which concurrently participate at the battle against your application. 
+This will create new pods which concurrently participate at the battle against your application. Note, that you'll likely modify the targeting url.
 
+## Contrib
+
+Feel free to use and to contribute.
