@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  web:
+    image: nginx:1
+    ports:
+      - "8080:80"
+  
+  artillery:
+    image: lukasbahr/siege-container:4.0.4-1build1
+    command: ["-c25", "-t2m ", "http://localhost:8080/"]

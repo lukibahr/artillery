@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: artillery
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: siege
+  namespace: artillery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: siege
+  template:
+    metadata:
+      labels:
+        app: siege
+    spec:
+      containers:
+      - name: siege
+        image: lukasbahr/siege-container:4.0.4-1build1
+        args: ["-c25", "-t2m", "http://localhost:80/"]    
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "100m"
+          limits:
+            memory: "400Mi"
+            cpu: "200m"
+        
